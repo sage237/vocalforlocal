@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,22 +21,23 @@ class RegistrationController extends GetxController {
   final anniversaryController = TextEditingController();
 
   void sendOTP() async {
-    if (form1.currentState!.validate()) {
-      log('object');
-      var response = await Get.toNamed(AppRoute.otpPage, arguments: {
-            'mobile': mobileController.text,
-            'email': emailController.text,
-            'msg': {"statuscode": "200", "OTP": "4587"}
-          }) ??
-          false;
-
-      if (response) {
-        pageController.nextPage(
-            duration: const Duration(milliseconds: 500), curve: Curves.linear);
-      }
-
-      log('OTP resp $response');
-    }
+    Get.toNamed(AppRoute.home);
+    // if (form1.currentState!.validate()) {
+    //   log('object');
+    //   var response = await Get.toNamed(AppRoute.otpPage, arguments: {
+    //         'mobile': mobileController.text,
+    //         'email': emailController.text,
+    //         'msg': {"statuscode": "200", "OTP": "4587"}
+    //       }) ??
+    //       false;
+    //
+    //   if (response) {
+    //     pageController.nextPage(
+    //         duration: const Duration(milliseconds: 500), curve: Curves.linear);
+    //   }
+    //
+    //   log('OTP resp $response');
+    // }
   }
 
   //OTP vars here

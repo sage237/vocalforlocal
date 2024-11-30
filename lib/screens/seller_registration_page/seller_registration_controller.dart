@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -187,7 +186,9 @@ class SellerRegistrationController extends GetxController {
 
         final response = await http.post(apiUrl, body: data);
         final msg = jsonDecode(response.body);
-        log('Data $data ${response.body}');
+        // log('Data $data ${response.body}');
+
+        // final msg = {'statuscode': '200', 'code': '4587'};
 
         if (msg['statuscode'] == '200') {
           Get.back();

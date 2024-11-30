@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'core_theme/theme.dart';
@@ -10,6 +11,7 @@ import 'screens/splash_page/splash_view.dart';
 import 'utils/screen_util.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   runApp(const MyApp());
 }
 
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
 
     log('First init ${Responsive.screenWidth},${Responsive.screenHeight},');
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

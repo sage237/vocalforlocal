@@ -5,10 +5,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../utils/constants.dart';
 
-class OTPController extends GetxController {
+class OTPController extends GetxController with CodeAutoFill {
   RxInt index = 0.obs;
   String mobileno = '';
   String email = '';
@@ -18,16 +19,33 @@ class OTPController extends GetxController {
   RxString source = ''.obs;
   RxMap<String, dynamic> msg =
       <String, dynamic>{}.obs; //main msg response from server
-
+  String appSignature = '';
   @override
   void onInit() {
-    // log('Arguments ${Get.arguments}');
+    listenForCode();
+
+    SmsAutoFill().getAppSignature.then((signature) {
+      appSignature = signature;
+    });
     mobileno = Get.arguments['mobile']; //value oy email or phone
     email = Get.arguments['email']; //email or phone
 
     msg.value = Get.arguments['msg'];
 
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    _timer?.cancel();
+    cancel();
+    super.onClose();
+  }
+
+  @override
+  void codeUpdated() {
+    text.value = code!;
+    index.value = 3;
   }
 
   @override
@@ -206,11 +224,5 @@ class OTPController extends GetxController {
         onTimerEnd();
       }
     });
-  }
-
-  @override
-  void onClose() {
-    _timer?.cancel();
-    super.onClose();
   }
 }
