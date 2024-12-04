@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vocalforlocal/core_theme/text_theme.dart';
 
 import '../utils/screen_util.dart';
 
@@ -48,7 +49,7 @@ class SearchWidget extends StatelessWidget {
           ),
           Text(
             'Search...',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: AppTextTheme.newTextThemeDark.titleMedium,
           )
         ],
       ),

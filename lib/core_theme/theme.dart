@@ -14,9 +14,9 @@ class AppTheme {
     primaryColor: AppColor.primary,
   );
   static final darkTheme = ThemeData.dark().copyWith(
-    appBarTheme:
-        const AppBarTheme(color: AppColor.white, shadowColor: Colors.black),
-    primaryColor: Colors.white,
-    textTheme: AppTextTheme.newTextThemeDark,
-  );
+      appBarTheme:
+          const AppBarTheme(color: AppColor.white, shadowColor: Colors.black),
+      primaryColor: Colors.white,
+      textTheme: AppTextTheme.newTextThemeDark,
+      scaffoldBackgroundColor: Colors.black);
 }
